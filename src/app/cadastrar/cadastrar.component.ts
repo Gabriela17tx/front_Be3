@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Paciente } from '../model/Paciente';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-cadastrar',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarComponent implements OnInit {
 
-  constructor() { }
+  paciente: Paciente = new Paciente
 
-  ngOnInit(): void {
+  sexo: string
+
+  constructor(
+    private authServce: AuthService
+  ) { }
+
+
+  ngOnInit() {
+    window.scroll(0,0)
+
   }
+  genero(event: any){
+    this.sexo = event.target.value
+  }
+  cadastrar(){
+    this.paciente.SEXO = this.sexo
+
+    this.authServce.cadastrar(this.paciente).subscribe((resp: Paciente)=> {
+      this.paciente = resp
+      alert( 'Paciente cadastrado com sucesso!' )
+    })
+
+  }
+
 
 }

@@ -1,10 +1,11 @@
-import { convenio } from "./Convenio"
-import { uf } from "./Uf"
+import { Convenio } from "./Convenio"
+import { Uf } from "./Uf"
 
-export class paciente{
+
+export class Paciente{
 
   public IDPACIENTE: number
-  public convenio: convenio
+  public IDCONVENIO: Convenio
   public PRONTUARIO : string
   public NOME: string
   public SOBRENOME: string
@@ -12,7 +13,7 @@ export class paciente{
   public SEXO: string
   public CPF: number
   public RG: string
-  public uf: uf
+  public uf: Uf
   public EMAIL: string
   public CELULAR: number
   public TELEFONE: number
